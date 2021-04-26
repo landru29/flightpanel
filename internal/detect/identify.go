@@ -71,7 +71,7 @@ func identify(ctx context.Context, log logrus.FieldLogger, portName string) (*de
 		}).Info("found device")
 
 		switch device.PanelType(s[0]) {
-		case device.PanelGyro, device.PanelAltitude, device.PanelEngine:
+		case device.PanelGyro, device.PanelAltitude, device.PanelEngine, device.PanelAirSpeed:
 			ret.Value = []float32{0}
 			return ret, nil
 		default:

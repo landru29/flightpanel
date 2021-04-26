@@ -24,6 +24,7 @@ const (
 	PanelGyro     = PanelType("GYRO")
 	PanelAltitude = PanelType("ALT")
 	PanelEngine   = PanelType("RPM")
+	PanelAirSpeed = PanelType("AIR")
 )
 
 func (p *Panel) Close(log logrus.FieldLogger) error {

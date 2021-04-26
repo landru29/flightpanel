@@ -26,6 +26,7 @@ func Listen(ctx context.Context, lg logrus.FieldLogger, p map[PanelType]*Panel) 
 		sim.SimVarGeneralEngRpm(1),
 		sim.SimVarGyroDriftError(),
 		sim.SimVarMagneticCompass(),
+		sim.SimVarAirspeedIndicated(),
 	)
 	if err != nil {
 		return err
@@ -63,6 +64,10 @@ func Listen(ctx context.Context, lg logrus.FieldLogger, p map[PanelType]*Panel) 
 				case "GENERAL ENG RPM:index":
 					if dev, ok := p[PanelEngine]; ok {
 						dev.SetValue(lg.WithField("type", PanelEngine), 0, float32(f))
+					}
+				case "AIRSPEED INDICATED":
+					if dev, ok := p[PanelAirSpeed]; ok {
+						dev.SetValue(lg.WithField("type", PanelAirSpeed), 0, float32(f))
 					}
 				}
 			}

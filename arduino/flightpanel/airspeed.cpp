@@ -19,7 +19,7 @@ AirSpeed::AirSpeed(MCUFRIEND_kbv* tft) {
 }
 
 String AirSpeed::name() {
-  return String("GYRO");
+  return String("AIR");
 }
 
 void AirSpeed::refresh() {
@@ -42,7 +42,8 @@ void AirSpeed::init() {
   this->img->showBMP("/airspeed.bmp", 5, 5);
 }
 
-void AirSpeed::drawIndicator(float angle, uint16_t color) {
+void AirSpeed::drawIndicator(float speed, uint16_t color) {
   int xOffset=159, yOffset=159;
-  this->tft->drawLine(xOffset, yOffset, xOffset+80*cos(3.14*angle/180), yOffset-80*sin(3.14*angle/180), color);
+  float angle = speed * 1.75-30;
+  this->tft->drawLine(xOffset, yOffset, xOffset+80*sin(3.14*angle/180), yOffset-80*cos(3.14*angle/180), color);
 }

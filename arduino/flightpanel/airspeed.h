@@ -16,7 +16,7 @@ class AirSpeed {
     MCUFRIEND_kbv* tft;
     Image *img;
 
-    void drawIndicator(float angle, uint16_t color);
+    void drawIndicator(float speed, uint16_t color);
 
     int16_t ht;
     int16_t top;
